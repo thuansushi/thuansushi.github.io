@@ -1,0 +1,2519 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mafatih | Professional Multilingual Glossary</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cairo:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --primary-light: #60a5fa;
+            --secondary: #7c3aed;
+            --accent: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-white: #ffffff;
+            --bg-light: #f9fafb;
+            --bg-lighter: #f8fafc;
+            --bg-dark: #111827;
+            --border-color: #e5e7eb;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --border-radius: 12px;
+            --border-radius-lg: 20px;
+            --transition-fast: 0.2s ease;
+            --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            color: var(--text-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        .arabic-text {
+            font-family: 'Cairo', sans-serif;
+            direction: rtl;
+        }
+        
+        .french-text {
+            font-family: 'Inter', sans-serif;
+            font-style: italic;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 16px;
+            }
+        }
+        
+        /* Header Styles */
+        header {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(229, 231, 235, 0.5);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 16px 0;
+            transition: all var(--transition-normal);
+        }
+        
+        header.scrolled {
+            padding: 12px 0;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        @media (max-width: 576px) {
+            .header-content {
+                flex-direction: column;
+                gap: 16px;
+                align-items: flex-start;
+            }
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            transition: transform var(--transition-normal);
+            flex-shrink: 0;
+        }
+        
+        .logo:hover {
+            transform: translateY(-2px);
+        }
+        
+        .logo-icon {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.3rem;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-main {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .logo-sub {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            letter-spacing: 1px;
+        }
+        
+        @media (max-width: 576px) {
+            .logo {
+                width: 100%;
+                justify-content: center;
+                margin-bottom: 8px;
+            }
+        }
+        
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+        
+        @media (max-width: 992px) {
+            .nav-controls {
+                width: 100%;
+                justify-content: space-between;
+                margin-top: 12px;
+                order: 3;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .nav-controls {
+                flex-direction: column;
+                gap: 16px;
+                align-items: stretch;
+            }
+        }
+        
+        .language-selector {
+            display: flex;
+            gap: 8px;
+            background: var(--bg-light);
+            padding: 6px;
+            border-radius: 10px;
+            flex-wrap: wrap;
+        }
+        
+        @media (max-width: 576px) {
+            .language-selector {
+                justify-content: center;
+            }
+        }
+        
+        .lang-btn {
+            padding: 8px 16px;
+            border: none;
+            background: transparent;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            transition: all var(--transition-fast);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex: 1;
+            justify-content: center;
+            min-width: 90px;
+        }
+        
+        .lang-btn:hover {
+            color: var(--primary);
+            background: rgba(37, 99, 235, 0.1);
+        }
+        
+        .lang-btn.active {
+            background: var(--primary);
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .user-actions {
+            display: flex;
+            gap: 12px;
+        }
+        
+        @media (max-width: 576px) {
+            .user-actions {
+                justify-content: center;
+            }
+        }
+        
+        .icon-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            border: none;
+            background: var(--bg-light);
+            color: var(--text-dark);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition-fast);
+            position: relative;
+            flex-shrink: 0;
+        }
+        
+        .icon-btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .notification-badge {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            background: var(--danger);
+            color: white;
+            font-size: 0.7rem;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+            padding: 8px;
+        }
+        
+        @media (max-width: 576px) {
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                right: 16px;
+                top: 16px;
+            }
+            
+            .user-actions {
+                display: none;
+            }
+            
+            .user-actions.mobile-visible {
+                display: flex;
+                position: absolute;
+                top: 70px;
+                right: 16px;
+                background: white;
+                padding: 16px;
+                border-radius: var(--border-radius);
+                box-shadow: var(--shadow-xl);
+                z-index: 100;
+                flex-direction: column;
+                min-width: 200px;
+            }
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            padding: 140px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 120px 0 60px;
+            }
+        }
+        
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.03) 0%, rgba(124, 58, 237, 0.03) 100%);
+            z-index: -1;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--text-dark) 0%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+        }
+        
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-subtitle {
+                font-size: 1.1rem;
+                padding: 0 16px;
+            }
+        }
+        
+        /* Search Section */
+        .search-section {
+            background: var(--bg-white);
+            border-radius: var(--border-radius-lg);
+            padding: 32px;
+            box-shadow: var(--shadow-xl);
+            margin-bottom: 48px;
+            transform: translateY(0);
+            transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+        }
+        
+        @media (max-width: 768px) {
+            .search-section {
+                padding: 24px;
+                margin-bottom: 32px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .search-section {
+                padding: 20px;
+            }
+        }
+        
+        .search-section:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl), 0 25px 50px -12px rgba(37, 99, 235, 0.15);
+        }
+        
+        .search-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        
+        @media (max-width: 480px) {
+            .search-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        @media (max-width: 480px) {
+            .section-title {
+                font-size: 1.3rem;
+            }
+        }
+        
+        .section-title i {
+            color: var(--primary);
+        }
+        
+        .search-type {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+        
+        @media (max-width: 480px) {
+            .search-type {
+                justify-content: center;
+            }
+        }
+        
+        .type-btn {
+            padding: 10px 20px;
+            background: var(--bg-light);
+            border: 2px solid transparent;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text-light);
+            transition: all var(--transition-fast);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex: 1;
+            min-width: 120px;
+            justify-content: center;
+        }
+        
+        @media (max-width: 480px) {
+            .type-btn {
+                min-width: 100px;
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+        }
+        
+        .type-btn:hover {
+            color: var(--primary);
+            background: rgba(37, 99, 235, 0.1);
+            border-color: rgba(37, 99, 235, 0.2);
+        }
+        
+        .type-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .search-container {
+            position: relative;
+            margin-bottom: 16px;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 20px 24px 20px 56px;
+            border: 2px solid var(--border-color);
+            border-radius: 14px;
+            font-size: 1.1rem;
+            transition: all var(--transition-normal);
+            background: var(--bg-white);
+            color: var(--text-dark);
+        }
+        
+        @media (max-width: 480px) {
+            .search-input {
+                padding: 16px 16px 16px 48px;
+                font-size: 1rem;
+            }
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+            font-size: 1.2rem;
+        }
+        
+        @media (max-width: 480px) {
+            .search-icon {
+                left: 16px;
+            }
+        }
+        
+        .search-btn {
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all var(--transition-normal);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        @media (max-width: 480px) {
+            .search-btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+                position: relative;
+                right: auto;
+                top: auto;
+                transform: none;
+                width: 100%;
+                margin-top: 12px;
+                justify-content: center;
+            }
+        }
+        
+        .search-btn:hover {
+            transform: translateY(-50%) scale(1.05);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        @media (max-width: 480px) {
+            .search-btn:hover {
+                transform: scale(1.05);
+            }
+        }
+        
+        .search-suggestions {
+            margin-top: 16px;
+            color: var(--text-light);
+        }
+        
+        .suggestion {
+            color: var(--primary);
+            cursor: pointer;
+            text-decoration: underline;
+            transition: color var(--transition-fast);
+        }
+        
+        .suggestion:hover {
+            color: var(--secondary);
+        }
+        
+        /* Main Content Grid - Simplified to 2fr 1fr */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 32px;
+            margin-bottom: 80px;
+        }
+        
+        @media (max-width: 1200px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Card Styles */
+        .card {
+            background: var(--bg-white);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+            transition: all var(--transition-normal);
+            height: 100%;
+            border: 1px solid rgba(229, 231, 235, 0.5);
+        }
+        
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .card-header {
+            padding: 24px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        }
+        
+        @media (max-width: 480px) {
+            .card-header {
+                padding: 20px;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+        }
+        
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        @media (max-width: 480px) {
+            .card-title {
+                font-size: 1.2rem;
+            }
+        }
+        
+        .card-title i {
+            color: var(--primary);
+        }
+        
+        .card-content {
+            padding: 24px;
+        }
+        
+        @media (max-width: 480px) {
+            .card-content {
+                padding: 20px;
+            }
+        }
+        
+        /* Term Details */
+        .term-header {
+            margin-bottom: 32px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        @media (max-width: 480px) {
+            .term-header {
+                margin-bottom: 24px;
+                padding-bottom: 20px;
+            }
+        }
+        
+        .term-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+            line-height: 1.2;
+            word-break: break-word;
+        }
+        
+        @media (max-width: 768px) {
+            .term-title {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .term-title {
+                font-size: 1.8rem;
+            }
+        }
+        
+        .term-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        
+        @media (max-width: 480px) {
+            .term-subtitle {
+                font-size: 1rem;
+                gap: 8px;
+            }
+        }
+        
+        .term-badge {
+            background: linear-gradient(135deg, var(--accent), #34d399);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        .term-section {
+            margin-bottom: 28px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s forwards;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        
+        @media (max-width: 480px) {
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+        }
+        
+        .section-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(124, 58, 237, 0.1));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            flex-shrink: 0;
+        }
+        
+        .section-label {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+        
+        .section-body {
+            background: var(--bg-light);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary);
+            word-break: break-word;
+            overflow-wrap: break-word;
+        }
+        
+        @media (max-width: 480px) {
+            .section-body {
+                padding: 16px;
+            }
+        }
+        
+        .language-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .language-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .language-item {
+            padding: 16px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .language-label {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .syn-ant-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .syn-ant-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Term tags styling */
+        .term-tag {
+            display: inline-block;
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary);
+            padding: 6px 12px;
+            border-radius: 6px;
+            margin: 4px 8px 4px 0;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .arabic-text .term-tag {
+            margin: 4px 0 4px 8px;
+        }
+        
+        /* Lists - Only history remains */
+        .history-list {
+            list-style: none;
+        }
+        
+        .history-item {
+            padding: 16px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all var(--transition-fast);
+            cursor: pointer;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .history-item:hover {
+            background: var(--bg-light);
+            transform: translateX(4px);
+        }
+        
+        .history-term {
+            font-weight: 600;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            word-break: break-word;
+            flex: 1;
+        }
+        
+        .history-date {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            flex-shrink: 0;
+        }
+        
+        /* FEEDBACK SECTION */
+        .feedback-section {
+            margin: 80px 0;
+        }
+        
+        .feedback-container {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.05), rgba(124, 58, 237, 0.05));
+            border-radius: var(--border-radius-lg);
+            padding: 48px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        @media (max-width: 768px) {
+            .feedback-container {
+                padding: 32px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .feedback-container {
+                padding: 24px;
+            }
+        }
+        
+        .feedback-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+        
+        .feedback-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .feedback-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        @media (max-width: 768px) {
+            .feedback-title {
+                font-size: 1.8rem;
+            }
+        }
+        
+        .feedback-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .feedback-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        
+        @media (max-width: 992px) {
+            .feedback-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+        }
+        
+        .feedback-form-container {
+            background: white;
+            padding: 32px;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        @media (max-width: 480px) {
+            .feedback-form-container {
+                padding: 24px;
+            }
+        }
+        
+        .form-group {
+            margin-bottom: 24px;
+        }
+        
+        .form-label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .form-label i {
+            color: var(--primary);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 16px;
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: all var(--transition-normal);
+            background: var(--bg-lighter);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+            background: white;
+        }
+        
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .feedback-type {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 8px;
+        }
+        
+        .feedback-type-btn {
+            padding: 10px 20px;
+            background: var(--bg-light);
+            border: 2px solid transparent;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            transition: all var(--transition-fast);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .feedback-type-btn:hover {
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary);
+        }
+        
+        .feedback-type-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        .feedback-btn {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all var(--transition-normal);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            justify-content: center;
+        }
+        
+        .feedback-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .feedback-info {
+            background: white;
+            padding: 32px;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        @media (max-width: 480px) {
+            .feedback-info {
+                padding: 24px;
+            }
+        }
+        
+        .info-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .info-title i {
+            color: var(--primary);
+        }
+        
+        .info-list {
+            list-style: none;
+            margin-bottom: 32px;
+        }
+        
+        .info-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .info-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .info-list i {
+            color: var(--accent);
+            margin-top: 4px;
+            flex-shrink: 0;
+        }
+        
+        .contact-info {
+            background: var(--bg-lighter);
+            padding: 24px;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .contact-title {
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--text-dark);
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 8px;
+            color: var(--text-light);
+        }
+        
+        .contact-item i {
+            color: var(--primary);
+            width: 20px;
+        }
+        
+        /* Empty States */
+        .empty-state {
+            text-align: center;
+            padding: 48px 24px;
+            color: var(--text-light);
+        }
+        
+        @media (max-width: 480px) {
+            .empty-state {
+                padding: 32px 16px;
+            }
+        }
+        
+        .empty-icon {
+            font-size: 3rem;
+            color: #d1d5db;
+            margin-bottom: 16px;
+        }
+        
+        .empty-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+        }
+        
+        .empty-text {
+            max-width: 300px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--bg-dark);
+            color: white;
+            padding: 64px 0 32px;
+            position: relative;
+        }
+        
+        @media (max-width: 768px) {
+            footer {
+                padding: 48px 0 24px;
+            }
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+        
+        @media (max-width: 992px) {
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 32px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+        }
+        
+        .footer-column h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color var(--transition-fast);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            gap: 12px;
+        }
+        
+        .footer-bottom {
+            padding-top: 32px;
+            border-top: 1px solid #374151;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        @media (max-width: 576px) {
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+                gap: 16px;
+            }
+        }
+        
+        .copyright {
+            color: #9ca3af;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 16px;
+        }
+        
+        @media (max-width: 576px) {
+            .social-links {
+                justify-content: center;
+            }
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #374151;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition-fast);
+        }
+        
+        .social-link:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+        }
+        
+        /* Scroll to top button */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: var(--shadow-lg);
+            z-index: 100;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all var(--transition-normal);
+        }
+        
+        @media (max-width: 768px) {
+            .scroll-top {
+                bottom: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+            }
+        }
+        
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .scroll-top:hover {
+            transform: translateY(-4px) scale(1.1);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        /* Loading animation */
+        .loading-spinner {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+        
+        @media (max-width: 480px) {
+            .loading-spinner {
+                padding: 30px;
+            }
+        }
+        
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(37, 99, 235, 0.1);
+            border-radius: 50%;
+            border-top-color: var(--primary);
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Toast notifications */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--accent);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 10px;
+            box-shadow: var(--shadow-lg);
+            z-index: 10000;
+            font-weight: 600;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            max-width: 90%;
+            text-align: center;
+        }
+        
+        .toast-success {
+            background: var(--accent);
+        }
+        
+        .toast-warning {
+            background: var(--warning);
+        }
+        
+        .toast-info {
+            background: var(--primary);
+        }
+        
+        .toast-error {
+            background: var(--danger);
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, var(--primary-dark), #6d28d9);
+        }
+        
+        /* Animation delays for staggered effects */
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+        .delay-5 { animation-delay: 0.5s; }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="mainHeader">
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-globe-americas"></i>
+                    </div>
+                    <div class="logo-text">
+                        <div class="logo-main">Mafatih</div>
+                        <div class="logo-sub">MULTILINGUAL GLOSSARY</div>
+                    </div>
+                </a>
+                
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <div class="nav-controls">
+                    <div class="language-selector">
+                        <button class="lang-btn active" data-lang="all">
+                            <i class="fas fa-globe"></i> All
+                        </button>
+                        <button class="lang-btn" data-lang="ar-en">
+                            <span class="arabic-text">عربي</span> - EN
+                        </button>
+                        <button class="lang-btn" data-lang="fr-ar">
+                            FR - <span class="arabic-text">عربي</span>
+                        </button>
+                    </div>
+                    
+                    <div class="user-actions" id="userActions">
+                        <button class="icon-btn" id="historyBtn" title="Search History">
+                            <i class="fas fa-history"></i>
+                        </button>
+                        <button class="icon-btn" id="notificationsBtn" title="Notifications">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-badge">3</span>
+                        </button>
+                        <button class="icon-btn" id="userBtn" title="User Profile">
+                            <i class="fas fa-user"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-bg"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title animate__animated animate__fadeInUp">Professional Multilingual Glossary</h1>
+                <p class="hero-subtitle animate__animated animate__fadeInUp animate__delay-1s">
+                    Advanced three-way search interface for Arabic, English, and French terminology with comprehensive linguistic resources.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <main class="container">
+        <!-- Search Section -->
+        <section class="search-section animate__animated animate__fadeInUp animate__delay-2s">
+            <div class="search-header">
+                <h2 class="section-title">
+                    <i class="fas fa-search"></i> Three-Way Glossary Search
+                </h2>
+                <div class="user-actions">
+                    <button class="icon-btn" id="shareTermBtn" title="Share Term">
+                        <i class="fas fa-share-alt"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="search-type">
+                <button class="type-btn active" data-type="word">
+                    <i class="fas fa-font"></i> Word
+                </button>
+                <button class="type-btn" data-type="phrase">
+                    <i class="fas fa-quote-right"></i> Phrase/Idiom
+                </button>
+                <button class="type-btn" data-type="derivation">
+                    <i class="fas fa-sitemap"></i> Derivation
+                </button>
+                <button class="type-btn" data-type="legal">
+                    <i class="fas fa-gavel"></i> Legal Term
+                </button>
+            </div>
+            
+            <div class="search-container">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search-input" id="searchInput" placeholder="Search for a term in Arabic, English, or French...">
+                <button class="search-btn" id="searchBtn">
+                    <i class="fas fa-search"></i> Search
+                </button>
+            </div>
+            
+            <div class="search-suggestions">
+                <small>Try: <span class="suggestion">"Justice"</span>, <span class="suggestion arabic-text">"عدل"</span>, <span class="suggestion french-text">"Justice"</span></small>
+            </div>
+        </section>
+
+        <!-- Loading Spinner -->
+        <div class="loading-spinner" id="loadingSpinner">
+            <div class="spinner"></div>
+            <p>Searching glossary database...</p>
+        </div>
+
+        <!-- Main Content Grid -->
+        <div class="main-grid">
+            <!-- Left Column - Term Details -->
+            <div class="left-column">
+                <!-- Term Details Card -->
+                <div class="card" id="termCard">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="fas fa-info-circle"></i> Term Details
+                        </h3>
+                        <div class="term-badge">Legal Terminology</div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <div id="termDetails">
+                            <div class="term-header">
+                                <h1 class="term-title arabic-text" id="termTitle">عدل</h1>
+                                <div class="term-subtitle">
+                                    <span>Justice (English)</span>
+                                    <span>•</span>
+                                    <span class="french-text">Justice (French)</span>
+                                    <span>•</span>
+                                    <span class="term-badge">Noun</span>
+                                </div>
+                            </div>
+                            
+                            <div class="term-section delay-1">
+                                <div class="section-header">
+                                    <div class="section-icon">
+                                        <i class="fas fa-font"></i>
+                                    </div>
+                                    <h4 class="section-label">Definition</h4>
+                                </div>
+                                <div class="section-body arabic-text" id="termDefinition">
+                                    العدل هو مفهوم يشير إلى الإنصاف والمساواة والتطبيق العادل للقوانين دون تحيز أو تمييز. يعتبر العدل أحد المبادئ الأساسية في الفلسفة والقانون والأخلاق.
+                                </div>
+                            </div>
+                            
+                            <div class="term-section delay-2">
+                                <div class="section-header">
+                                    <div class="section-icon">
+                                        <i class="fas fa-language"></i>
+                                    </div>
+                                    <h4 class="section-label">Equivalent Terms</h4>
+                                </div>
+                                <div class="section-body">
+                                    <div class="language-grid">
+                                        <div class="language-item">
+                                            <div class="language-label">
+                                                <i class="fas fa-language"></i> Arabic
+                                            </div>
+                                            <p class="arabic-text">عدل، إنصاف، مساواة</p>
+                                        </div>
+                                        <div class="language-item">
+                                            <div class="language-label">
+                                                <i class="fas fa-language"></i> English
+                                            </div>
+                                            <p>Justice, fairness, equity</p>
+                                        </div>
+                                        <div class="language-item">
+                                            <div class="language-label">
+                                                <i class="fas fa-language"></i> French
+                                            </div>
+                                            <p class="french-text">Justice, équité, impartialité</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="term-section delay-3">
+                                <div class="section-header">
+                                    <div class="section-icon">
+                                        <i class="fas fa-comment-alt"></i>
+                                    </div>
+                                    <h4 class="section-label">Contextual Example</h4>
+                                </div>
+                                <div class="section-body">
+                                    <div class="language-item">
+                                        <div class="language-label arabic-text">
+                                            <i class="fas fa-language"></i> العربية
+                                        </div>
+                                        <p class="arabic-text">يجب أن يسود العدل في جميع أحكام القضاء وأن يضمن الحقوق للجميع دون تمييز.</p>
+                                    </div>
+                                    <div class="language-item">
+                                        <div class="language-label">
+                                            <i class="fas fa-language"></i> English
+                                        </div>
+                                        <p>Justice must prevail in all judicial rulings and guarantee rights for all without discrimination.</p>
+                                    </div>
+                                    <div class="language-item">
+                                        <div class="language-label french-text">
+                                            <i class="fas fa-language"></i> Français
+                                        </div>
+                                        <p class="french-text">La justice doit prévaloir dans toutes les décisions judiciaires et garantir les droits pour tous sans discrimination.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="term-section delay-4">
+                                <div class="section-header">
+                                    <div class="section-icon">
+                                        <i class="fas fa-sync-alt"></i>
+                                    </div>
+                                    <h4 class="section-label">Synonyms & Antonyms</h4>
+                                </div>
+                                <div class="section-body">
+                                    <div class="syn-ant-grid">
+                                        <div>
+                                            <h5>Synonyms</h5>
+                                            <div id="termSynonyms">
+                                                <span class="term-tag arabic-text">إنصاف</span>
+                                                <span class="term-tag arabic-text">مساواة</span>
+                                                <span class="term-tag">Fairness</span>
+                                                <span class="term-tag">Equity</span>
+                                                <span class="term-tag french-text">Équité</span>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h5>Antonyms</h5>
+                                            <div id="termAntonyms">
+                                                <span class="term-tag arabic-text">ظلم</span>
+                                                <span class="term-tag arabic-text">جور</span>
+                                                <span class="term-tag">Injustice</span>
+                                                <span class="term-tag">Bias</span>
+                                                <span class="term-tag french-text">Injustice</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="term-section delay-5">
+                                <div class="section-header">
+                                    <div class="section-icon">
+                                        <i class="fas fa-link"></i>
+                                    </div>
+                                    <h4 class="section-label">Derivations & Idioms</h4>
+                                </div>
+                                <div class="section-body">
+                                    <div class="language-item">
+                                        <div class="language-label">
+                                            <i class="fas fa-sitemap"></i> Derivations
+                                        </div>
+                                        <p><strong>Arabic:</strong> عادل (just), عدالة (justice system), تعادل (balance)<br>
+                                        <strong>English:</strong> Just (adj.), justify (v.), justification (n.)<br>
+                                        <strong>French:</strong> Juste (adj.), justifier (v.), justification (n.)</p>
+                                    </div>
+                                    <div class="language-item">
+                                        <div class="language-label">
+                                            <i class="fas fa-quote-right"></i> Idioms & Expressions
+                                        </div>
+                                        <p><span class="arabic-text">"عدل السماء"</span> (divine justice)<br>
+                                        <span>"Scales of justice"</span><br>
+                                        <span class="french-text">"La justice est aveugle"</span> (justice is blind)</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Usage Statistics Section -->
+                            <div class="term-section">
+                                <div class="section-header">
+                                    <div class="section-icon">
+                                        <i class="fas fa-chart-bar"></i>
+                                    </div>
+                                    <h4 class="section-label">Usage Statistics</h4>
+                                </div>
+                                <div class="section-body">
+                                    <div class="language-grid">
+                                        <div class="language-item">
+                                            <div class="language-label">
+                                                <i class="fas fa-search"></i> Search Frequency
+                                            </div>
+                                            <p>High - Top 5% of all glossary searches</p>
+                                        </div>
+                                        <div class="language-item">
+                                            <div class="language-label">
+                                                <i class="fas fa-calendar-alt"></i> Last Updated
+                                            </div>
+                                            <p>November 15, 2023</p>
+                                        </div>
+                                        <div class="language-item">
+                                            <div class="language-label">
+                                                <i class="fas fa-check-circle"></i> Verification Status
+                                            </div>
+                                            <p>Verified by 3 linguistic experts</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="noResults" class="empty-state" style="display: none;">
+                            <div class="empty-icon">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <h3 class="empty-title">No Results Found</h3>
+                            <p class="empty-text">Try searching for a different term or check the spelling. You can also browse the glossary by category.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right Column - Search History Only -->
+            <div class="right-column">
+                <!-- Search History Card -->
+                <div class="card animate__animated animate__fadeInRight">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="fas fa-history"></i> Search History
+                        </h3>
+                        <button class="icon-btn" id="clearHistoryBtn" title="Clear History">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="card-content">
+                        <ul class="history-list" id="searchHistory">
+                            <!-- Dynamically populated -->
+                        </ul>
+                        
+                        <div id="emptyHistory" class="empty-state" style="display: none;">
+                            <div class="empty-icon">
+                                <i class="fas fa-history"></i>
+                            </div>
+                            <h3 class="empty-title">No Search History</h3>
+                            <p class="empty-text">Your search history will appear here after you search for terms.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- FEEDBACK SECTION -->
+        <section class="feedback-section" id="feedbackSection">
+            <div class="feedback-container">
+                <div class="feedback-header">
+                    <h2 class="feedback-title">Share Your Feedback</h2>
+                    <p class="feedback-subtitle">Help us improve Mafatih by sharing your suggestions, reporting issues, or requesting new features.</p>
+                </div>
+                
+                <div class="feedback-grid">
+                    <div class="feedback-form-container">
+                        <form id="feedbackForm">
+                            <div class="form-group">
+                                <label class="form-label" for="feedbackName">
+                                    <i class="fas fa-user"></i> Your Name (Optional)
+                                </label>
+                                <input type="text" class="form-control" id="feedbackName" placeholder="Enter your name">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="feedbackEmail">
+                                    <i class="fas fa-envelope"></i> Email (Optional)
+                                </label>
+                                <input type="email" class="form-control" id="feedbackEmail" placeholder="Enter your email for follow-up">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">
+                                    <i class="fas fa-tag"></i> Feedback Type
+                                </label>
+                                <div class="feedback-type">
+                                    <button type="button" class="feedback-type-btn active" data-type="suggestion">
+                                        <i class="fas fa-lightbulb"></i> Suggestion
+                                    </button>
+                                    <button type="button" class="feedback-type-btn" data-type="issue">
+                                        <i class="fas fa-bug"></i> Issue Report
+                                    </button>
+                                    <button type="button" class="feedback-type-btn" data-type="feature">
+                                        <i class="fas fa-plus-circle"></i> Feature Request
+                                    </button>
+                                    <button type="button" class="feedback-type-btn" data-type="general">
+                                        <i class="fas fa-comment"></i> General Feedback
+                                    </button>
+                                </div>
+                                <input type="hidden" id="feedbackType" value="suggestion">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="feedbackSubject">
+                                    <i class="fas fa-heading"></i> Subject
+                                </label>
+                                <input type="text" class="form-control" id="feedbackSubject" placeholder="Brief description of your feedback" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="feedbackMessage">
+                                    <i class="fas fa-edit"></i> Detailed Message
+                                </label>
+                                <textarea class="form-control form-textarea" id="feedbackMessage" placeholder="Please provide detailed feedback..." required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="feedback-btn" id="submitFeedbackBtn">
+                                <i class="fas fa-paper-plane"></i> Submit Feedback
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <div class="feedback-info">
+                        <h3 class="info-title">
+                            <i class="fas fa-info-circle"></i> How Your Feedback Helps
+                        </h3>
+                        
+                        <ul class="info-list">
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <div>
+                                    <strong>Improve Accuracy:</strong> Help us correct definitions, translations, or examples.
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-plus-circle"></i>
+                                <div>
+                                    <strong>Add New Terms:</strong> Suggest missing terms or specialized vocabulary.
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-cogs"></i>
+                                <div>
+                                    <strong>Enhance Features:</strong> Request new features to make Mafatih more useful.
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-bug"></i>
+                                <div>
+                                    <strong>Report Issues:</strong> Let us know about technical problems or bugs.
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-language"></i>
+                                <div>
+                                    <strong>Expand Languages:</strong> Suggest new language pairs or dialects to include.
+                                </div>
+                            </li>
+                        </ul>
+                        
+                        <div class="contact-info">
+                            <h4 class="contact-title">Other Ways to Contact Us</h4>
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <span>feedback@Mafatihcom</span>
+                            </div>
+                        
+                            <div class="contact-item">
+                                <i class="fas fa-clock"></i>
+                                <span>Response time: 1-2 business days</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>Mafatih</h4>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Our Mission</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Team</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Careers</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Legal Glossary</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Academic Terms</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Technical Terms</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Cultural References</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Help Center</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Tutorials</a></li>
+                        <li><a href="#feedbackSection"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Report Issue</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Terms of Service</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Cookie Policy</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Data Protection</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="copyright">
+                    &copy; 2026 Mafatih. All rights reserved. Professional Multilingual Glossary System.
+                </div>
+                
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-researchgate"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top" id="scrollTopBtn">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script>
+        // Enhanced glossary data
+        const glossaryData = {
+            "عدل": {
+                title: "عدل",
+                subtitle: "Justice (English) • Justice (French)",
+                definition: "العدل هو مفهوم يشير إلى الإنصاف والمساواة والتطبيق العادل للقوانين دون تحيز أو تمييز. يعتبر العدل أحد المبادئ الأساسية في الفلسفة والقانون والأخلاق.",
+                equivalent: "عدل، إنصاف، مساواة | Justice, fairness, equity | Justice, équité, impartialité",
+                example: "يجب أن يسود العدل في جميع أحكام القضاء وأن يضمن الحقوق للجميع دون تمييز. | Justice must prevail in all judicial rulings and guarantee rights for all without discrimination. | La justice doit prévaloir dans toutes les décisions judiciaires et garantir les droits pour tous sans discrimination.",
+                synonyms: "إنصاف, مساواة, Fairness, Equity, Équité",
+                antonyms: "ظلم, جور, Injustice, Bias, Injustice",
+                derivations: "Arabic: عادل (just), عدالة (justice system), تعادل (balance) | English: Just (adj.), justify (v.), justification (n.) | French: Juste (adj.), justifier (v.), justification (n.)",
+                idioms: "عدل السماء (divine justice) | Scales of justice | La justice est aveugle (justice is blind)",
+                category: "Legal Terminology",
+                type: "Noun"
+            },
+            "justice": {
+                title: "Justice",
+                subtitle: "عدل (Arabic) • Justice (French)",
+                definition: "The quality of being fair and reasonable in the administration of the law, ensuring equal treatment and protection of rights for all individuals.",
+                equivalent: "Justice, fairness, equity | عدل، إنصاف، مساواة | Justice, équité, impartialité",
+                example: "The pursuit of justice is a fundamental principle of democratic societies. | السعي لتحقيق العدل مبدأ أساسي في المجتمعات الديمقراطية. | La poursuite de la justice est un principe fondamental des sociétés démocratiques.",
+                synonyms: "Fairness, Equity, Impartiality, إنصاف, مساواة",
+                antonyms: "Injustice, Bias, Discrimination, ظلم, جور",
+                derivations: "English: Just (adj.), justify (v.), justification (n.) | Arabic: عادل (just), عدالة (justice system) | French: Juste (adj.), justifier (v.)",
+                idioms: "Scales of justice | Blind justice | Justice delayed is justice denied",
+                category: "Legal Terminology",
+                type: "Noun"
+            },
+            "liberté": {
+                title: "Liberté",
+                subtitle: "حرية (Arabic) • Freedom (English)",
+                definition: "État d'une personne qui n'est pas sous la domination d'autrui, qui dispose de l'autonomie et de la capacité d'agir selon sa volonté, dans le respect des lois.",
+                equivalent: "Liberté, autonomie, indépendance | حرية، استقلال، ذاتية | Freedom, liberty, autonomy",
+                example: "La liberté d'expression est un droit fondamental dans les sociétés démocratiques. | حرية التعبير حق أساسي في المجتمعات الديمقراطية. | Freedom of expression is a fundamental right in democratic societies.",
+                synonyms: "Autonomie, Indépendance, Émancipation, حرية, استقلال",
+                antonyms: "Contrainte, Oppression, Assujettissement, قمع, استبداد",
+                derivations: "French: Libérer (to free), Libertaire (libertarian), Libéral (liberal) | Arabic: تحرير (liberation), مستقل (independent) | English: Liberate (v.), Liberty (n.)",
+                idioms: "Prendre la liberté de | Donner carte blanche | La liberté ou la mort",
+                category: "Political Philosophy",
+                type: "Noun"
+            },
+            "حرية": {
+                title: "حرية",
+                subtitle: "Freedom (English) • Liberté (French)",
+                definition: "القدرة على التصرف والتفكير والتعبير دون قيود أو إكراه، مع مراعاة حقوق الآخرين والقوانين المنظمة للمجتمع.",
+                equivalent: "حرية، استقلال، ذاتية | Freedom, liberty, autonomy | Liberté, autonomie, indépendance",
+                example: "تحمي الدساتير الحديثة حرية التعبير كحق أساسي للمواطنين. | Modern constitutions protect freedom of expression as a fundamental right of citizens. | Les constitutions modernes protègent la liberté d'expression comme un droit fondamental des citoyens.",
+                synonyms: "استقلال, ذاتية, حرية التصرف, Freedom, Liberty",
+                antonyms: "قمع, استبداد, عبودية, Oppression, Tyranny",
+                derivations: "Arabic: تحرير (liberation), مستقل (independent), تحرري (libertarian) | English: Liberate (v.), Liberty (n.) | French: Libérer (to free), Libertaire (libertarian)",
+                idioms: "حرية التعبير | حرية الاختيار | حرية مكفولة بالقانون",
+                category: "Political Philosophy",
+                type: "Noun"
+            }
+        };
+
+        // DOM Elements
+        const mainHeader = document.getElementById('mainHeader');
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const userActions = document.getElementById('userActions');
+        const searchInput = document.getElementById('searchInput');
+        const searchBtn = document.getElementById('searchBtn');
+        const typeBtns = document.querySelectorAll('.type-btn');
+        const langBtns = document.querySelectorAll('.lang-btn');
+        const termDetails = document.getElementById('termDetails');
+        const noResults = document.getElementById('noResults');
+        const loadingSpinner = document.getElementById('loadingSpinner');
+        const searchHistory = document.getElementById('searchHistory');
+        const clearHistoryBtn = document.getElementById('clearHistoryBtn');
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+        const termCard = document.getElementById('termCard');
+        const feedbackForm = document.getElementById('feedbackForm');
+        const feedbackTypeBtns = document.querySelectorAll('.feedback-type-btn');
+        const feedbackTypeInput = document.getElementById('feedbackType');
+
+        // State
+        let currentTerm = "عدل";
+        let searchHistoryItems = JSON.parse(localStorage.getItem('MafatihSearchHistory')) || [
+            {term: "حرية", date: "Today, 10:30 AM"},
+            {term: "Democracy", date: "Yesterday, 3:45 PM"},
+            {term: "Égalité", date: "Nov 12, 2023"},
+            {term: "مسؤولية", date: "Nov 10, 2023"},
+            {term: "Law", date: "Nov 8, 2023"}
+        ];
+
+        // Initialize the application
+        function initApp() {
+            displayTerm(currentTerm);
+            updateSearchHistoryDisplay();
+            setupEventListeners();
+            setupAnimations();
+            setupScrollEffects();
+            setupMobileMenu();
+        }
+
+        // Set up event listeners
+        function setupEventListeners() {
+            // Search functionality
+            searchBtn.addEventListener('click', performSearch);
+            searchInput.addEventListener('keyup', function(event) {
+                if (event.key === 'Enter') {
+                    performSearch();
+                }
+            });
+
+            // Search type buttons
+            typeBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    typeBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    animateButtonClick(this);
+                });
+            });
+
+            // Language selector buttons
+            langBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    langBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    animateButtonClick(this);
+                });
+            });
+
+            // Clear history button
+            clearHistoryBtn.addEventListener('click', clearSearchHistory);
+
+            // Submit feedback form
+            feedbackForm.addEventListener('submit', submitFeedback);
+
+            // Feedback type buttons
+            feedbackTypeBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    feedbackTypeBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    feedbackTypeInput.value = this.dataset.type;
+                    animateButtonClick(this);
+                });
+            });
+
+            // Scroll to top button
+            scrollTopBtn.addEventListener('click', scrollToTop);
+
+            // Suggestions click
+            document.querySelectorAll('.suggestion').forEach(suggestion => {
+                suggestion.addEventListener('click', function() {
+                    searchInput.value = this.textContent.replace(/["']/g, '');
+                    performSearch();
+                });
+            });
+
+            // Header scroll effect
+            window.addEventListener('scroll', handleScroll);
+        }
+
+        // Set up mobile menu
+        function setupMobileMenu() {
+            mobileMenuBtn.addEventListener('click', function() {
+                userActions.classList.toggle('mobile-visible');
+                const icon = this.querySelector('i');
+                if (userActions.classList.contains('mobile-visible')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!userActions.contains(event.target) && !mobileMenuBtn.contains(event.target)) {
+                    userActions.classList.remove('mobile-visible');
+                    const icon = mobileMenuBtn.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        }
+
+        // Set up animations
+        function setupAnimations() {
+            // Intersection Observer for fade-in animations
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate__animated', 'animate__fadeInUp');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            // Observe cards for animation
+            document.querySelectorAll('.card').forEach(card => {
+                observer.observe(card);
+            });
+
+            // Observe feedback section
+            const feedbackSection = document.getElementById('feedbackSection');
+            if (feedbackSection) {
+                observer.observe(feedbackSection);
+            }
+        }
+
+        // Set up scroll effects
+        function setupScrollEffects() {
+            // Parallax effect for hero section
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const hero = document.querySelector('.hero-section');
+                if (hero) {
+                    hero.style.transform = `translateY(${scrolled * 0.1}px)`;
+                }
+            });
+        }
+
+        // Handle scroll events
+        function handleScroll() {
+            // Header scroll effect
+            if (window.scrollY > 50) {
+                mainHeader.classList.add('scrolled');
+            } else {
+                mainHeader.classList.remove('scrolled');
+            }
+
+            // Show/hide scroll to top button
+            if (window.scrollY > 500) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        }
+
+        // Animate button click
+        function animateButtonClick(button) {
+            button.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                button.style.transform = '';
+            }, 150);
+        }
+
+        // Display term details
+        function displayTerm(term) {
+            const termData = glossaryData[term.toLowerCase()] || glossaryData[term];
+            
+            if (termData) {
+                // Show loading spinner
+                loadingSpinner.style.display = 'block';
+                termDetails.style.opacity = '0.5';
+                
+                setTimeout(() => {
+                    // Hide loading spinner
+                    loadingSpinner.style.display = 'none';
+                    termDetails.style.opacity = '1';
+                    
+                    // Show term details
+                    termDetails.style.display = 'block';
+                    noResults.style.display = 'none';
+                    
+                    // Update term information
+                    document.getElementById('termTitle').textContent = termData.title;
+                    document.getElementById('termSubtitle').innerHTML = `
+                        <span>${termData.subtitle.split(' • ')[0]}</span>
+                        <span>•</span>
+                        <span>${termData.subtitle.split(' • ')[1]}</span>
+                        <span>•</span>
+                        <span class="term-badge">${termData.type}</span>
+                    `;
+                    
+                    // Update definition with animation
+                    const definitionEl = document.getElementById('termDefinition');
+                    definitionEl.style.opacity = '0';
+                    definitionEl.textContent = termData.definition;
+                    setTimeout(() => {
+                        definitionEl.style.transition = 'opacity 0.3s ease';
+                        definitionEl.style.opacity = '1';
+                    }, 100);
+                    
+                    document.querySelector('.term-badge').textContent = termData.category;
+                    
+                    currentTerm = term;
+                    
+                    // Animate card
+                    termCard.style.transform = 'translateY(-10px)';
+                    setTimeout(() => {
+                        termCard.style.transform = '';
+                    }, 300);
+                    
+                    // Add to search history
+                    addToSearchHistory(term);
+                    
+                }, 800); // Simulate loading delay
+            } else {
+                // Show no results
+                loadingSpinner.style.display = 'none';
+                termDetails.style.display = 'none';
+                noResults.style.display = 'block';
+                
+                // Animate no results
+                noResults.classList.add('animate__animated', 'animate__fadeIn');
+            }
+        }
+
+        // Perform search
+        function performSearch() {
+            const searchTerm = searchInput.value.trim();
+            
+            if (searchTerm) {
+                // Add search animation
+                searchBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+                searchBtn.disabled = true;
+                
+                setTimeout(() => {
+                    displayTerm(searchTerm);
+                    searchInput.value = '';
+                    
+                    // Reset button
+                    searchBtn.innerHTML = '<i class="fas fa-search"></i> Search';
+                    searchBtn.disabled = false;
+                }, 500);
+            }
+        }
+
+        // Add term to search history
+        function addToSearchHistory(term) {
+            // Check if term already exists in history
+            const existingIndex = searchHistoryItems.findIndex(item => item.term === term);
+            
+            if (existingIndex !== -1) {
+                // Remove existing entry to add it at the beginning
+                searchHistoryItems.splice(existingIndex, 1);
+            }
+            
+            // Create date string
+            const now = new Date();
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            
+            const yesterday = new Date(today);
+            yesterday.setDate(yesterday.getDate() - 1);
+            
+            let dateStr;
+            if (now.toDateString() === today.toDateString()) {
+                dateStr = `Today, ${now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}`;
+            } else if (now.toDateString() === yesterday.toDateString()) {
+                dateStr = `Yesterday, ${now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}`;
+            } else {
+                dateStr = now.toLocaleDateString('en-US', { 
+                    month: 'short', 
+                    day: 'numeric', 
+                    year: 'numeric' 
+                });
+            }
+            
+            // Add to beginning of array
+            searchHistoryItems.unshift({
+                term: term,
+                date: dateStr
+            });
+            
+            // Keep only last 10 items
+            if (searchHistoryItems.length > 10) {
+                searchHistoryItems = searchHistoryItems.slice(0, 10);
+            }
+            
+            // Save to localStorage and update display
+            localStorage.setItem('MafatihSearchHistory', JSON.stringify(searchHistoryItems));
+            updateSearchHistoryDisplay();
+        }
+
+        // Update search history display
+        function updateSearchHistoryDisplay() {
+            searchHistory.innerHTML = '';
+            
+            if (searchHistoryItems.length === 0) {
+                document.getElementById('emptyHistory').style.display = 'block';
+                searchHistory.style.display = 'none';
+            } else {
+                document.getElementById('emptyHistory').style.display = 'none';
+                searchHistory.style.display = 'block';
+                
+                searchHistoryItems.forEach((item, index) => {
+                    const li = document.createElement('li');
+                    li.className = 'history-item';
+                    li.style.animationDelay = `${index * 0.05}s`;
+                    
+                    const termSpan = document.createElement('span');
+                    termSpan.className = 'history-term';
+                    
+                    // Detect language for styling
+                    if (/[\u0600-\u06FF]/.test(item.term)) {
+                        termSpan.classList.add('arabic-text');
+                    } else if (/[éèêëàâùûüôœçÉÈÊËÀÂÙÛÜÔŒÇ]/.test(item.term)) {
+                        termSpan.classList.add('french-text');
+                    }
+                    
+                    termSpan.textContent = item.term;
+                    
+                    const dateSpan = document.createElement('span');
+                    dateSpan.className = 'history-date';
+                    dateSpan.textContent = item.date;
+                    
+                    li.appendChild(termSpan);
+                    li.appendChild(dateSpan);
+                    
+                    // Add click event to search for this term again
+                    li.addEventListener('click', function() {
+                        // Add click animation
+                        this.style.transform = 'scale(0.95)';
+                        setTimeout(() => {
+                            this.style.transform = '';
+                            displayTerm(item.term);
+                        }, 150);
+                    });
+                    
+                    searchHistory.appendChild(li);
+                });
+            }
+        }
+
+        // Clear search history
+        function clearSearchHistory() {
+            if (searchHistoryItems.length > 0) {
+                // Animation for clearing
+                const historyItems = document.querySelectorAll('.history-item');
+                historyItems.forEach((item, index) => {
+                    setTimeout(() => {
+                        item.style.transform = 'translateX(100px)';
+                        item.style.opacity = '0';
+                    }, index * 50);
+                });
+                
+                setTimeout(() => {
+                    searchHistoryItems = [];
+                    localStorage.setItem('MafatihSearchHistory', JSON.stringify(searchHistoryItems));
+                    updateSearchHistoryDisplay();
+                    showToast('Search history cleared', 'info');
+                }, historyItems.length * 50 + 300);
+            }
+        }
+
+        // Submit feedback
+        function submitFeedback(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('feedbackName').value.trim();
+            const email = document.getElementById('feedbackEmail').value.trim();
+            const subject = document.getElementById('feedbackSubject').value.trim();
+            const message = document.getElementById('feedbackMessage').value.trim();
+            const type = feedbackTypeInput.value;
+            
+            if (!subject || !message) {
+                showToast('Please fill in all required fields', 'warning');
+                return;
+            }
+            
+            // Show loading state
+            const submitBtn = document.getElementById('submitFeedbackBtn');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+            submitBtn.disabled = true;
+            
+            // Simulate API call
+            setTimeout(() => {
+                // Reset button
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                
+                // Reset form
+                feedbackForm.reset();
+                feedbackTypeBtns.forEach(btn => btn.classList.remove('active'));
+                document.querySelector('.feedback-type-btn[data-type="suggestion"]').classList.add('active');
+                feedbackTypeInput.value = 'suggestion';
+                
+                // Show success message
+                showToast('Thank you for your feedback! We\'ll review it shortly.', 'success');
+                
+                // Log feedback (in a real app, this would be sent to a server)
+                console.log('Feedback submitted:', {
+                    name,
+                    email,
+                    type,
+                    subject,
+                    message
+                });
+            }, 1500);
+        }
+
+        // Show toast notification
+        function showToast(message, type) {
+            // Create toast element
+            const toast = document.createElement('div');
+            toast.className = `toast toast-${type}`;
+            toast.textContent = message;
+            
+            // Style the toast
+            toast.style.position = 'fixed';
+            toast.style.bottom = '30px';
+            toast.style.left = '50%';
+            toast.style.transform = 'translateX(-50%) translateY(100px)';
+            toast.style.padding = '12px 24px';
+            toast.style.borderRadius = '10px';
+            toast.style.boxShadow = 'var(--shadow-lg)';
+            toast.style.zIndex = '10000';
+            toast.style.fontWeight = '600';
+            toast.style.transition = 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+            toast.style.textAlign = 'center';
+            toast.style.maxWidth = '90%';
+            
+            // Add to DOM
+            document.body.appendChild(toast);
+            
+            // Animate in
+            setTimeout(() => {
+                toast.style.transform = 'translateX(-50%) translateY(0)';
+            }, 10);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                toast.style.transform = 'translateX(-50%) translateY(100px)';
+                setTimeout(() => {
+                    document.body.removeChild(toast);
+                }, 300);
+            }, 3000);
+        }
+
+        // Scroll to top
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Initialize the app when DOM is loaded
+        document.addEventListener('DOMContentLoaded', initApp);
+    </script>
+</body>
+</html>
